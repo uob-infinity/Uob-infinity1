@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+  <style>
+    html, body {
+      overflow: hidden;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #002B7F;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      width: 100%;
+      max-width: 500px;
+      color: white;
+    }
+    .welcome-text {
+      font-size: 42px;
+      font-weight: 500;
+      margin-bottom: 30px;
+    }
+    .input-container {
+      position: relative;
+      margin-bottom: 10px;
+    }
+    .input-container::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      background: white;
+      transition: 0.3s ease-in-out;
+    }
+    .input-container select,
+    .input-container input {
+      width: 100%;
+      padding: 16px 12px;
+      border: none;
+      background: transparent;
+      color: white;
+      font-size: 20px;
+      outline: none;
+      position: relative;
+      z-index: 1;
+      appearance: none;
+    }
+    .input-container label {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: white;
+      transition: 0.3s ease-in-out;
+      pointer-events: none;
+    }
+    .input-container input:focus + label,
+    .input-container input:not(:placeholder-shown) + label,
+    .input-container select:focus + label,
+    .input-container select:not([value=""]) + label {
+      top: 5px;
+      font-size: 16px;
+      color: #00A2FF;
+    }
+    .password-container {
+      position: relative;
+    }
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: white;
+    }
+    .remember-me {
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+    .login-button {
+      width: 100%;
+      padding: 16px;
+      background: white;
+      color: #002B7F;
+      font-size: 20px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      margin-top: 25px;
+      border-radius: 5px;
+    }
+    .login-button:hover {
+      background: #e0e0e0;
+    }
+    .link {
+      color: #66b3ff;
+      font-size: 18px;
+      margin-top: 15px;
+      cursor: pointer;
+      text-align: left;
+    }
+    .link:hover {
+      text-decoration: underline;
+    }
+    .virtual-keyboard {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: #00A2FF;
+      margin-top: -3px;
+      margin-bottom: 15px;
+      padding-left: 12px;
+    }
+    .virtual-keyboard i {
+      font-size: 16px;
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="welcome-text">Welcome</div>
+    <div class="input-container">
+      <select id="location" required>
+        <option value="">Select Location</option>
+        <option value="indonesia">Indonesia</option>
+        <option value="malaysia">Malaysia</option>
+        <option value="singapore">Singapore</option>
+        <option value="vietnam">Vietnam</option>
+        <option value="hongkong">Hong Kong</option>
+      </select>
+      <label for="location">Location</label>
+    </div>
+    
+    <div class="input-container">
+      <input type="text" id="org-id" placeholder=" " required>
+      <label for="org-id">Organisation ID</label>
+    </div>
+
+    <div class="input-container">
+      <input type="text" id="user-id" placeholder=" " required>
+      <label for="user-id">User ID</label>
+    </div>
+
+    <div class="virtual-keyboard">
+      <i class="fa-solid fa-keyboard"></i>
+      <span>Virtual Keyboard</span>
+    </div>
+
+    <div class="input-container password-container">
+      <input type="password" id="password" placeholder=" " required>
+      <label for="password">Password</label>
+      <i class="fa fa-eye toggle-password" onclick="togglePassword()"></i>
+    </div>
+
+    <div class="virtual-keyboard">
+      <i class="fa-solid fa-keyboard"></i>
+      <span>Virtual Keyboard</span>
+    </div>
+
+    <div class="remember-me">
+      <input type="checkbox" id="remember">
+      <label for="remember">Remember Me</label>
+    </div>
+
+    <button class="login-button" onclick="validateLogin()">Log In</button>
+
+    <p class="link">Have trouble logging in?</p>
+    <p class="link">Want to activate your new account?</p>
+  </div>
+
+  <script>
+    function togglePassword() {
+      let passwordField = document.getElementById("password");
+      passwordField.type = passwordField.type === "password" ? "text" : "password";
+    }
+  </script>
+</body>
+</html>
